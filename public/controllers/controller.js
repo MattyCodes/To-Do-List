@@ -19,6 +19,13 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     });
   };
 
+  $scope.editTodo = function(todo) {
+    var i = $scope.todoList.indexOf(todo);
+    $http.put('/todoList/' + todo._id, todo).then(function(res) {
+      $scope.todoList.splice(i, 1, res.data);
+    });
+  };
+
   $scope.delete = function(id) {
     $http.delete('/todoList/' + id).then(function(res) {
       var i = $scope.todoList.indexOf(res.data);

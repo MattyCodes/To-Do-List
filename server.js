@@ -28,6 +28,18 @@ app.post('/todoList', function(req, res) {
 
 });
 
+app.put('/todoList/:id', function(req, res) {
+
+  var id = req.params.id;
+
+  db.todolist.findAndModify({ query: { _id: mongojs.ObjectId(id) },
+    update: { $set: { text: req.body.text } },
+    new: true }, function(err, doc) {
+      res.json(doc);
+    });
+
+});
+
 app.delete('/todoList/:id', function(req, res) {
 
   var id = req.params.id;
