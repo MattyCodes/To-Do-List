@@ -6,7 +6,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
   });
 
   $scope.selectTodo = function(item) {
-    $scope.todo = item;
+    $scope.todo = { _id: item._id, text: item.text };
   }
 
   $scope.deselectTodo = function() {

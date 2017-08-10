@@ -18,10 +18,10 @@
       </div>
       <div class="row" id="new-todo">
         <div class="form-container">
-          <form id="todo-form" (submit)="addTodo()">
+          <form class="todo-form" (submit)="addTodo()">
             <div class="col-md-2"></div>
             <div class="col-md-4">
-              <input id="todo-input" type="text" class="form-control" placeholder="Ex: Take out the trash." ng-model="todo.text" (submit)="addTodo()">
+              <input type="text" class="todo-input form-control" placeholder="Ex: Take out the trash." ng-model="todo.text" (submit)="addTodo()">
             </div>
             <div class="col-md-4">
               <button class="btn btn-lg btn-primary" ng-click="addTodo()">Add To Do</button>
@@ -35,9 +35,7 @@
           <ul class="todo-list">
             <li ng-repeat="todo in todoList">
               <span class="todo-text">{{ todo.text }}</span>
-              <!-- <a href="/edit/{{todo._id}}"> -->
                 <button class="btn btn-warning edit-btn" ng-click="selectTodo(todo)">Edit</button>
-              <!-- </a> -->
               <button class="btn btn-danger" ng-click="delete(todo._id)">Delete</button>
               <hr>
             </li>
@@ -46,16 +44,16 @@
       </div>
       <div class="row hide" id="edit-todo">
         <div class="form-container">
-          <form id="todo-form" (submit)="editTodo(todo)">
+          <form class="todo-form" (submit)="editTodo(todo); deselectTodo()">
             <div class="col-md-1">
               <a id="cancel-edit" ng-click="deselectTodo()">Cancel</a>
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-5">
-              <input id="todo-input" type="text" class="form-control" placeholder={{todo.text}} ng-model="todo.text" (submit)="editTodo(todo)">
+              <input type="text" class="todo-input form-control" value={{todo.text}} ng-model="todo.text" (submit)="editTodo(todo); deselectTodo()">
             </div>
             <div class="col-md-4">
-              <button class="btn btn-lg btn-info" id="update-btn" ng-click="editTodo(todo)">Update To Do</button>
+              <button class="btn btn-lg btn-info" id="update-btn" ng-click="editTodo(todo); deselectTodo()">Update To Do</button>
             </div>
             <div class="col-md-1"></div>
           </form>

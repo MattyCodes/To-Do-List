@@ -5,8 +5,8 @@ $(document).ready(function() {
 
 function clearInput() {
 
-  $('#todo-form').on('submit', function() {
-      $('#todo-input').val('');
+  $('.todo-form').on('submit', function() {
+      $('.todo-input').val('');
   });
 
 };
