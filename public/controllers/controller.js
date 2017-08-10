@@ -5,6 +5,14 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.todoList = res.data;
   });
 
+  $scope.selectTodo = function(item) {
+    $scope.todo = item;
+  }
+
+  $scope.deselectTodo = function() {
+    $scope.todo = null;
+  }
+
   $scope.addTodo = function() {
     $http.post('/todoList', $scope.todo).then(function(res) {
       $scope.todoList.push(res.data);

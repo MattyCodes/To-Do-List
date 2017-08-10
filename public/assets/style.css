@@ -50,3 +50,14 @@ input[type='text'] {
 span.todo-text {
   padding-right: 20px;
 }
+
+#cancel-edit {
+  font-size: 21px;
+  line-height: 44px;
+  letter-spacing: 1px;
+  padding: 8px;
+}
+
+#cancel-edit:hover {
+  cursor: pointer;
+}

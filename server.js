@@ -21,17 +21,23 @@ app.get('/todoList', function(req, res) {
 });
 
 app.post('/todoList', function(req, res) {
+
   db.todolist.insert(req.body, function(err, doc) {
     res.json(doc);
   });
+
 });
 
 app.delete('/todoList/:id', function(req, res) {
+
   var id = req.params.id;
+
   db.todolist.remove({ _id: mongojs.ObjectId(id) }, function(err, doc) {
     res.json(doc);
   });
+
 });
 
 app.listen(3000);
+
 console.log("Running Node Server...");

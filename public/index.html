@@ -2,8 +2,6 @@
 <html ng-app="myApp">
   <head>
     <title>To Do List</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/script.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
@@ -18,7 +16,7 @@
         </div>
         <hr style="width: 90%; margin-bottom: 50px;">
       </div>
-      <div class="row">
+      <div class="row" id="new-todo">
         <div class="form-container">
           <form id="todo-form" (submit)="addTodo()">
             <div class="col-md-2"></div>
@@ -32,13 +30,13 @@
           </form>
         </div>
       </div>
-      <div class="row">
+      <div class="row" id="todo-list">
         <div class="col-md-12">
           <ul class="todo-list">
             <li ng-repeat="todo in todoList">
               <span class="todo-text">{{ todo.text }}</span>
               <!-- <a href="/edit/{{todo._id}}"> -->
-                <button class="btn btn-warning">Edit</button>
+                <button class="btn btn-warning edit-btn" ng-click="selectTodo(todo)">Edit</button>
               <!-- </a> -->
               <button class="btn btn-danger" ng-click="delete(todo._id)">Delete</button>
               <hr>
@@ -46,7 +44,26 @@
           </ul>
         </div>
       </div>
+      <div class="row hide" id="edit-todo">
+        <div class="form-container">
+          <form id="todo-form" (submit)="editTodo(todo._id)">
+            <div class="col-md-1">
+              <a id="cancel-edit" ng-click="deselectTodo()">Cancel</a>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+              <input id="todo-input" type="text" class="form-control" placeholder={{todo.text}} ng-model="todo.text" (submit)="editTodo(todo._id)">
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-lg btn-info" ng-click="editTodo(todo._id)">Update To Do</button>
+            </div>
+            <div class="col-md-1"></div>
+          </form>
+        </div>
+      </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
     <script src="controllers/controller.js"></script>
   </body>
