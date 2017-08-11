@@ -44,16 +44,16 @@
       </div>
       <div class="row hide" id="edit-todo">
         <div class="form-container">
-          <form class="todo-form" (submit)="editTodo(todo); deselectTodo()">
+          <form class="todo-form" (submit)="editTodo(current_todo); deselectTodo()">
             <div class="col-md-1">
               <a id="cancel-edit" ng-click="deselectTodo()">Cancel</a>
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-5">
-              <input type="text" class="todo-input form-control" value={{todo.text}} ng-model="todo.text" (submit)="editTodo(todo); deselectTodo()">
+              <input type="text" class="todo-input form-control" value={{current_todo.text}} ng-model="current_todo.text" (submit)="editTodo(current_todo); deselectTodo()">
             </div>
             <div class="col-md-4">
-              <button class="btn btn-lg btn-info" id="update-btn" ng-click="editTodo(todo); deselectTodo()">Update To Do</button>
+              <button class="btn btn-lg btn-info" id="update-btn" ng-click="editTodo(current_todo); deselectTodo()">Update To Do</button>
             </div>
             <div class="col-md-1"></div>
           </form>

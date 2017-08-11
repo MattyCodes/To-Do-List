@@ -1,8 +1,8 @@
-var express = require('express');
-var path    = require("path");
-var app = express();
-var mongojs = require('mongojs');
-var db = mongojs('todolist', ['todolist']);
+var express    = require('express');
+var path       = require("path");
+var app        = express();
+var mongojs    = require('mongojs');
+var db         = mongojs('todolist', ['todolist']);
 var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname = './public'));
@@ -16,6 +16,16 @@ app.get('/todoList', function(req, res) {
 
   db.todolist.find(function(err, docs) {
     res.json(docs);
+  });
+
+});
+
+app.get('/todoList/:id', function(req, res) {
+
+  var id = req.params.id;
+
+  db.todolist.find({ _id: mongojs.ObjectId(id) }, function(err, doc) {
+    res.json(doc);
   });
 
 });
